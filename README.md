@@ -63,7 +63,7 @@ class User extends \yii\db\ActiveRecorde implements \yii\web\IdentityInterface
 		$modelId = $result->getJti();
 		
 		//return the user model or null if not found
-		return User::findOne($modelId);
+		return static::findOne($modelId);
 	}
 	
 	//...
