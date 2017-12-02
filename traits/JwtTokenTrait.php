@@ -197,6 +197,7 @@ trait JwtTokenTrait {
 				$val = static::convertToArray($val, $recursive, $depth+1);
 			}
 		}
+
 		return $param;
 	}
 
