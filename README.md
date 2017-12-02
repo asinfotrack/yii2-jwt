@@ -5,6 +5,8 @@ helper classes and represented as arrays, as it is usual within Yii2-application
 
 Also check out the [repository of the firebase jwt extension](https://github.com/firebase/php-jwt).
 
+__WATCH OUT: this extension is still under development. Breaking changes can occur without notice until first release!__
+
 ## Installation
 
 ### Basic installation
