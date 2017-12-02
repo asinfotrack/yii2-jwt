@@ -20,7 +20,7 @@ $ composer require asinfotrack/yii2-jwt
 or add
 
 ```
-"asinfotrack/yii2-article": "~0.8.0"
+"asinfotrack/yii2-jwt": "~0.8.0"
 ```
 
 to the `require` section of your `composer.json` file.
