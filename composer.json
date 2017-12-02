@@ -1,0 +1,34 @@
+{
+	"name": "asinfotrack/yii2-jwt",
+	"type": "yii2-extension",
+
+	"description": "Yii2-jwt is a set of functionality to work with JSON Web Tokens",
+	"keywords": ["yii2", "jwt", "helper", "token", "auth"],
+
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Pascal Mueller",
+			"email": "pascal.mueller@asinfotrack.ch",
+			"homepage": "http://www.asinfotrack.ch"
+		}
+	],
+
+	"minimum-stability": "stable",
+	"support": {
+		"source": "https://github.com/asinfotrack/yii2-jwt",
+		"issues": "https://github.com/asinfotrack/yii2-jwt/issues"
+	},
+
+	"require": {
+		"php": ">=5.4.0",
+		"yiisoft/yii2": "~2.0.6",
+		"firebase/php-jwt": "~5.0.0"
+	},
+
+	"autoload": {
+		"psr-4": {
+			"asinfotrack\\yii2\\jwt\\": ""
+		}
+	}
+}
