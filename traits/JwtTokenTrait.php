@@ -161,6 +161,7 @@ trait JwtTokenTrait {
 	 * Adds the default payload to the token when no callback is specified
 	 *
 	 * @param \asinfotrack\yii2\jwt\helpers\JwtTokenIssueRequest $issueRequest the issue request
+	 * @param int $defaultLifespanSeconds the default lifespan in seconds
 	 * @return \asinfotrack\yii2\jwt\helpers\JwtTokenIssueRequest the modified token request
 	 */
 	protected static function addDefaultPayload($issueRequest, $defaultLifespanSeconds=null)
@@ -169,7 +170,7 @@ trait JwtTokenTrait {
 
 		if (!empty(Yii::$app->name)) $issueRequest->setSubject(Yii::$app->name);
 		if (Yii::$app instanceof \yii\web\Application) $issueRequest->setIssuer(Yii::$app->request->hostInfo);
-		if ($defaultLifespanSeconds !== null && !$issueRequest->hasPayloadEntry('ext')) {
+		if ($defaultLifespanSeconds !== null && !$issueRequest->hasPayloadEntry('exp')) {
 			$issueRequest->setExpiresAt(time() + $defaultLifespanSeconds);
 		}
 
