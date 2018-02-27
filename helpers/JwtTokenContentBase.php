@@ -21,17 +21,33 @@ abstract class JwtTokenContentBase extends \yii\base\BaseObject
 	 */
 	protected $payload = [];
 
+	/**
+	 * Returns whether or not the token is currently valid. This means a proper
+	 * issues stamp and it is in a currently valid date range
+	 *
+	 * @return bool true if valid
+	 */
 	public function isValid()
 	{
 		$issuedAtValid = $this->getIssuedAt() !== null ? $this->getIssuedAt() <= time() : true;
 		return $issuedAtValid && !$this->isExpired() && !$this->isNotYetValid();
 	}
 
+	/**
+	 * Returns whether or not the token is expired
+	 *
+	 * @return bool true if expired
+	 */
 	public function isExpired()
 	{
 		return $this->getExpiresAt() !== null ? $this->getExpiresAt() < time() : false;
 	}
 
+	/**
+	 * Returns whether or not the token is not yet valid
+	 *
+	 * @return bool true if not yet valid
+	 */
 	public function isNotYetValid()
 	{
 		return $this->getNotValidBefore() !== null ? $this->getNotValidBefore() > time() : false;
@@ -70,6 +86,7 @@ abstract class JwtTokenContentBase extends \yii\base\BaseObject
 	}
 
 	/**
+	 * Returns the contents of the issuer payload field (`iss`)
 	 *
 	 * @return mixed|null either the issuer or null if not specified
 	 * @see https://tools.ietf.org/html/rfc7519#page-9
@@ -80,7 +97,7 @@ abstract class JwtTokenContentBase extends \yii\base\BaseObject
 	}
 
 	/**
-	 *
+	 * Returns the contents of the subject payload field (`sub`)
 	 *
 	 * @return mixed|null either the subject or null if not specified
 	 * @see https://tools.ietf.org/html/rfc7519#page-9
@@ -91,7 +108,7 @@ abstract class JwtTokenContentBase extends \yii\base\BaseObject
 	}
 
 	/**
-	 *
+	 * Returns the contents of the audience payload field (`aud`)
 	 *
 	 * @return mixed|null either the audience or null if not specified
 	 * @see https://tools.ietf.org/html/rfc7519#page-9
@@ -102,6 +119,7 @@ abstract class JwtTokenContentBase extends \yii\base\BaseObject
 	}
 
 	/**
+	 * Returns the contents of the expires at payload field (`exp`)
 	 *
 	 * @return integer|null either the expires at timestamp or null if not specified
 	 * @see https://tools.ietf.org/html/rfc7519#page-9
@@ -113,7 +131,7 @@ abstract class JwtTokenContentBase extends \yii\base\BaseObject
 	}
 
 	/**
-	 *
+	 * Returns the contents of the not valid before payload field (`nbf`)
 	 *
 	 * @return integer|null either the not valid before timestamp or null if not specified
 	 * @see https://tools.ietf.org/html/rfc7519#page-10
@@ -125,7 +143,7 @@ abstract class JwtTokenContentBase extends \yii\base\BaseObject
 	}
 
 	/**
-	 *
+	 * Returns the contents of the issued at payload field (`iat`)
 	 *
 	 * @return integer|null either the issued at timestamp or null if not specified
 	 * @see https://tools.ietf.org/html/rfc7519#page-10
@@ -137,7 +155,7 @@ abstract class JwtTokenContentBase extends \yii\base\BaseObject
 	}
 
 	/**
-	 *
+	 * Returns the contents of the jti payload field (`jti`)
 	 *
 	 * @return mixed|null either the jti value or null if not specified
 	 * @see https://tools.ietf.org/html/rfc7519#page-10
